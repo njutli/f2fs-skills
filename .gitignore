@@ -1,0 +1,9 @@
+# F2FS Learning Skills
+
+/home/i_ingfeng/f2fs-skills/
+/home/i_ingfeng/linux/
+.git/
+*.swp
+*.swo
+*~
+.DS_Store
