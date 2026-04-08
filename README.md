@@ -34,11 +34,17 @@
 | [Checkpoint 机制](checkpoint/checkpoint/SKILL.md) | CP pack结构、flush流程、版本切换、一致性保证 | 690 |
 | [Recovery 流程](recovery/recovery/SKILL.md) | 3阶段恢复、roll-forward、fsync恢复、orphan处理 | 520 |
 
+### 🔄 FTL 交互
+
+| Skill | 内容 | 行数 |
+|-------|------|------|
+| [FTL 交互机制](ftl/ftl-interaction/SKILL.md) | FTL地址映射、F2FS与FTL关系、混合映射、协同优化 | 650 |
+
 ### 🧹 垃圾回收
 
 | Skill | 内容 | 行数 |
 |-------|------|------|
-| [GC 机制](gc/garbage-collection/SKILL.md) | Victim选择、Greedy/SSR算法、前后台GC、迁移流程 | 710 |
+| [GC 机制](gc/garbage-collection/SKILL.md) | Victim选择、Greedy/Cost-benefit算法、前后台GC、SSR | 820 |
 | [Segment 管理](segment/segment-management/SKILL.md) | SIT管理、空闲段分配、多段并发写入、冷热分离 | 640 |
 
 ### ⚡ 性能优化
@@ -64,31 +70,32 @@
   │
   ├─ 1. F2FS 整体概述          → 理解设计理念和架构
   ├─ 2. F2FS 快速部署          → 动手搭建实验环境
-  └─ 3. F2FS 磁盘布局          → 理解存储组织方式
+  ├─ 3. F2FS 磁盘布局          → 理解存储组织方式
+  └─ 4. FTL 交互机制           → 理解与闪存设备的关系
        │
        ▼
 核心机制 (2-3周)
   │
-  ├─ 4. NAT 节点地址表         → 理解地址映射
-  ├─ 5. Node 管理              → 理解元数据组织
-  ├─ 6. Checkpoint 机制        → 理解一致性保证
-  └─ 7. Segment 管理           → 理解空间分配
+  ├─ 5. NAT 节点地址表         → 理解地址映射
+  ├─ 6. Node 管理              → 理解元数据组织
+  ├─ 7. Checkpoint 机制        → 理解一致性保证
+  └─ 8. Segment 管理           → 理解空间分配
        │
        ▼
 性能优化 (2-3周)
   │
-  ├─ 8. GC 机制                → 理解垃圾回收
-  ├─ 9. Multi-head 日志        → 理解并发写入
-  ├─ 10. Extent Cache          → 理解读优化
-  └─ 11. Inline 优化           → 理解小文件优化
+  ├─ 9. GC 机制                → 理解垃圾回收
+  ├─ 10. Multi-head 日志       → 理解并发写入
+  ├─ 11. Extent Cache          → 理解读优化
+  └─ 12. Inline 优化           → 理解小文件优化
        │
        ▼
 高级特性 (2-3周)
   │
-  ├─ 12. Recovery 流程         → 理解崩溃恢复
-  ├─ 13. Atomic Write          → 理解原子操作
-  ├─ 14. Compression           → 理解压缩机制
-  └─ 15. Encryption            → 理解加密特性
+  ├─ 13. Recovery 流程         → 理解崩溃恢复
+  ├─ 14. Atomic Write          → 理解原子操作
+  ├─ 15. Compression           → 理解压缩机制
+  └─ 16. Encryption            → 理解加密特性
 ```
 
 ## 每个 SKILL.md 的结构
@@ -128,6 +135,8 @@ f2fs-skills/
 │   └── checkpoint/           # Checkpoint 机制详解
 ├── recovery/                  # 恢复机制
 │   └── recovery/             # Recovery 流程分析
+├── ftl/                       # FTL 交互
+│   └── ftl-interaction/      # F2FS 与 FTL 的关系
 ├── gc/                        # 垃圾回收
 │   └── garbage-collection/   # GC 算法与实现
 ├── segment/                   # 段管理
